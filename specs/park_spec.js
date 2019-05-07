@@ -58,7 +58,28 @@ describe('Park', function() {
     const actual = park.findDinosaursBySpecies('Velociraptor');
     assert.strictEqual(actual, 2);
   });
-  
+
+  it('should be able to calculate total visits per day', function () {
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    const expected = 75;
+    assert.strictEqual(park.visitsPerDay(), expected);
+  });
+
+  it('should be able to calculate total visits per year', function () {
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    const expected = 27375;
+    assert.strictEqual(park.visitsPerYear(), expected);
+  });
+
+  it('should be able to calculate revenue per year', function () {
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    const expected = 273750;
+    assert.strictEqual(park.revenuePerYear(), expected);
+  });
+
   //
   // it('should be able to remove all dinosaurs of a particular species', function(){
   //   park.addDinosaur(dinosaur1);

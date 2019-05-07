@@ -16,6 +16,15 @@ Park.prototype.removeDinosaur = function(dinosaur) {
   this.dinosaurs.pop(dinosaur);
 }
 
+Park.prototype.mostPopularDinosaur = function() {
+
+  for (const dinosaur of this.dinosaurs) {
+    if (dinosaur.guestsAttractedPerDay === 50) {
+      return dinosaur
+    };
+  };
+};
+
 Park.prototype.findDinosaursBySpecies = function (species) {
 
 let speciesArray = [];
@@ -28,6 +37,34 @@ let speciesArray = [];
 
   return speciesArray.length;
 };
+
+Park.prototype.visitsPerDay = function() {
+  let dailyVisits = 0;
+
+  for (const dinosaur of this.dinosaurs) {
+    dailyVisits += dinosaur.guestsAttractedPerDay
+  }
+  return dailyVisits;
+};
+
+Park.prototype.visitsPerYear = function() {
+  let dailyVisits = 0;
+
+  for (const dinosaur of this.dinosaurs) {
+    dailyVisits += dinosaur.guestsAttractedPerDay
+  }
+  return (dailyVisits * 365)
+}
+
+Park.prototype.revenuePerYear = function() {
+  let dailyRevenue = 0;
+
+  for (const dinosaur of this.dinosaurs) {
+    dailyRevenue += (dinosaur.guestsAttractedPerDay * this.price)
+  }
+  return (dailyRevenue * 365)
+}
+
 
 // Park.prototype.removeDinosaursBySpecies = function (species) {
 //   for (const dinosaur of this.dinosaurs) {
